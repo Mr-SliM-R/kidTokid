@@ -43,3 +43,25 @@ export default function Home() {
     </div>
   )
 }
+
+import { basket } from '../lib/api';
+// inside card:
+<button
+  onClick={() => basket.add(it.listing_id).catch(e => alert(e.message))}
+  className="mt-3 rounded-lg px-3 py-2 bg-sky-500 text-white text-sm"
+>
+  Add to Basket
+</button>
+
+
+import { favorites } from '../lib/api';
+
+// inside each card:
+<div className="flex gap-2 mt-3">
+  <button onClick={() => basket.add(it.listing_id)} className="rounded-lg px-3 py-2 bg-sky-500 text-white text-sm">
+    Add to Basket
+  </button>
+  <button onClick={() => favorites.add(it.listing_id)} className="rounded-lg px-3 py-2 bg-pink-500 text-white text-sm">
+    ♥ Favorite
+  </button>
+</div>

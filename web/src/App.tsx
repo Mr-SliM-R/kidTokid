@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Home from './pages/Home';
+import Basket from './src/pages/Basket';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [tab, setTab] = useState<'home' | 'basket'>('home');
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div>
+      <nav className="p-3 border-b flex gap-2 bg-gray-100">
+        <button
+          onClick={() => setTab('home')}
+          className={`px-3 py-1 rounded ${tab === 'home' ? 'bg-sky-500 text-white' : 'bg-white'}`}
+        >
+          Home
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+        <button
+          onClick={() => setTab('basket')}
+          className={`px-3 py-1 rounded ${tab === 'basket' ? 'bg-sky-500 text-white' : 'bg-white'}`}
+        >
+          Basket
+        </button>
+      </nav>
 
-export default App
+      <main className="p-4">
+        {tab === 'home' ? <Home /> : <Basket />}
+      </main>
+    </div>
+  );
+}
