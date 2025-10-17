@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Home from './pages/Home';
-import Basket from './src/pages/Basket';
+import Basket from './pages/Basket';
 import './App.css';
 
 export default function App() {
